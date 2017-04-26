@@ -1,0 +1,177 @@
+# {{ ansible_managed }}
+
+{% if kmod_tpe_extras_harden_ptrace is defined %}
+{%   if kmod_tpe_extras_harden_ptrace %}
+tpe.extras.harden_ptrace = 1
+{%   else %}
+tpe.extras.harden_ptrace = 0
+{%   endif %}
+{% else %}
+tpe.extras.harden_ptrace = 0
+{% endif %}
+{% if kmod_tpe_extras_proc_kallsyms is defined %}
+{%   if kmod_tpe_extras_proc_kallsyms %}
+tpe.extras.proc_kallsyms = 1
+{%   else %}
+tpe.extras.proc_kallsyms = 0
+{%   endif %}
+{% else %}
+#tpe.extras.proc_kallsyms = 0
+{% endif %}
+{% if kmod_tpe_extras_ps_gid is defined %}
+tpe.extras.ps_gid = {{ kmod_tpe_extras_ps_gid }}
+{% else %}
+#tpe.extras.ps_gid = 0
+{% endif %}
+{% if kmod_tpe_extras_ps is defined %}
+{%   if kmod_tpe_extras_ps %}
+tpe.extras.ps = 1
+{%   else %}
+tpe.extras.ps = 0
+{%   endif %}
+{% else %}
+#tpe.extras.ps = 0
+{% endif %}
+{% if kmod_tpe_extras_lsmod is defined %}
+{%   if kmod_tpe_extras_lsmod %}
+tpe.extras.lsmod = 1
+{%   else %}
+tpe.extras.lsmod = 0
+{%   endif %}
+{% else %}
+#tpe.extras.lsmod = 0
+{% endif %}
+{% if kmod_tpe_extras_harden_symlink is defined %}
+{%   if kmod_tpe_extras_harden_symlink %}
+tpe.extras.harden_symlink = 1
+{%   else %}
+tpe.extras.harden_symlink = 0
+{%   endif %}
+{% else %}
+#tpe.extras.harden_symlink = 0
+{% endif %}
+{% if kmod_tpe_extras_harden_hardlinks is defined %}
+{%   if kmod_tpe_extras_harden_hardlinks %}
+tpe.extras.harden_hardlinks = 1
+{%   else %}
+tpe.extras.harden_hardlinks = 0
+{%   endif %}
+{% else %}
+#tpe.extras.harden_hardlinks = 0
+{% endif %}
+{% if kmod_tpe_extras_restrict_setuid is defined %}
+{%   if kmod_tpe_extras_restrict_setuid %}
+tpe.extras.restrict_setuid = 1
+{%   else %}
+tpe.extras.restrict_setuid = 0
+{%   endif %}
+{% else %}
+#tpe.extras.restrict_setuid = 0
+{% endif %}
+{% if kmod_tpe_lock is defined %}
+{%   if kmod_tpe_lock %}
+tpe.lock = 1
+{%   else %}
+tpe.lock = 0
+{%   endif %}
+{% else %}
+#tpe.lock = 0
+{% endif %}
+{% if kmod_tpe_log_floodburst is defined %}
+tpe.log_floodburst = {{ kmod_tpe_log_floodburst }}
+{% else %}
+#tpe.log_floodburst = 5
+{% endif %}
+{% if kmod_tpe_log_floodtime is defined %}
+tpe.log_floodtime = {{ kmod_tpe_log_floodtime }}
+{% else %}
+#tpe.log_floodtime = 5
+{% endif %}
+{% if kmod_tpe_log_max is defined %}
+tpe.log_max = {{ kmod_tpe_log_max }}
+{% else %}
+#tpe.log_max = 50
+{% endif %}
+{% if kmod_tpe_log is defined %}
+{%   if kmod_tpe_log %}
+tpe.log = 1
+{%   else %}
+tpe.log = 0
+{%   endif %}
+{% else %}
+#tpe.log = 1
+{% endif %}
+{% if kmod_tpe_kill is defined %}
+{%   if kmod_tpe_kill %}
+tpe.kill = 1
+{%   else %}
+tpe.kill = 0
+{%   endif %}
+{% else %}
+#tpe.kill = 0
+{% endif %}
+{% if kmod_tpe_hardcoded_path is defined %}
+tpe.hardcoded_path = {{ kmod_tpe_hardcoded_path|join(';') }}
+{% else %}
+#tpe.hardcoded_path =
+{% endif %}
+{% if kmod_tpe_paranoid is defined %}
+{%   if kmod_tpe_paranoid %}
+tpe.paranoid = 1
+{%   else %}
+tpe.paranoid = 0
+{%   endif %}
+{% else %}
+#tpe.paranoid = 0
+{% endif %}
+{% if kmod_tpe_check_file is defined %}
+{%   if kmod_tpe_check_file %}
+tpe.check_file = 1
+{%   else %}
+tpe.check_file = 0
+{%   endif %}
+{% else %}
+#tpe.check_file = 1
+{% endif %}
+{% if kmod_tpe_strict is defined %}
+{%   if kmod_tpe_strict %}
+tpe.strict = 1
+{%   else %}
+tpe.strict = 0
+{%   endif %}
+{% else %}
+#tpe.strict = 1
+{% endif %}
+{% if kmod_tpe_dmz_gid is defined %}
+tpe.dmz_gid = {{ kmod_tpe_dmz_gid }}
+{% else %}
+#tpe.dmz_gid = 0
+{% endif %}
+{% if kmod_tpe_admin_gid is defined %}
+tpe.admin_gid = {{ kmod_tpe_admin_gid }}
+{% else %}
+#tpe.admin_gid = 0
+{% endif %}
+{% if kmod_tpe_trusted_gid is defined %}
+tpe.trusted_gid = {{ kmod_tpe_trusted_gid }}
+{% else %}
+#tpe.trusted_gid = 0
+{% endif %}
+{% if kmod_tpe_trusted_invert is defined %}
+{%   if kmod_tpe_trusted_invert %}
+tpe.trusted_invert = 1
+{%   else %}
+tpe.trusted_invert = 0
+{%   endif %}
+{% else %}
+#tpe.trusted_invert = 0
+{% endif %}
+{% if kmod_tpe_softmode is defined %}
+{%   if kmod_tpe_softmode %}
+tpe.softmode = 1
+{%   else %}
+tpe.softmode = 0
+{%   endif %}
+{% else %}
+tpe.softmode = 0
+{% endif %}

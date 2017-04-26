@@ -1,0 +1,5 @@
+---
+- name: reload sysctl
+  tags: kmod-tpe
+  command: sysctl -p /etc/sysctl.d/tpe.conf
+  ignore_errors: yes

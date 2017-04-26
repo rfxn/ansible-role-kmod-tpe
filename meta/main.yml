@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: "Ryan MacDonald"
+  description: "RHEL/CentOS - Trusted Path Execution (TPE) Linux Kernel Module"
+  license: "MIT"
+  min_ansible_version: "2.0"
+  platforms:
+    - name: EL
+      versions: 
+        - 6
+        - 7
+  galaxy_tags:
+    - security
+    - system 
+    - tpe
+dependencies:
+  - name: "nexcess.repo.elrepo"
+    src: "git+git@github.com:nexcess/ansible-role-repo-elrepo.git"

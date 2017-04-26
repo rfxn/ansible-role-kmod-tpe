@@ -1,0 +1,30 @@
+---
+- name: Install kmod-tpe
+  yum: name=kmod-tpe
+       enablerepo=elrepo,elrepo-testing
+       state=present
+  register: kmod_tpe_yum
+  tags:
+    - security
+    - system
+    - tpe
+    - kmod-tpe
+
+- block:
+    - name: Load tpe kernel module
+      modprobe: name=tpe
+                state=present
+    - name: Configure tpe.conf
+      template: src=etc/sysctl.d/tpe.conf.j2
+                dest=/etc/sysctl.d/tpe.conf
+                owner=root
+                group=root
+                mode=0644
+      notify: reload sysctl
+  when: kmod_tpe_yum|success
+  tags:
+    - security
+    - system
+    - tpe
+    - kmod-tpe
+
