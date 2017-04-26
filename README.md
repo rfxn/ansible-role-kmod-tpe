@@ -11,18 +11,6 @@ or her own code to attack the system.
 Additionally, this module also provides non-root view restrictions on process list,
 kernel modules, kallsyms and calling set(u|g)id.
 
-
-## Acknowledgements
-
- - Corey Henderson - https://github.com/cormander/
-
-Creator and maintainer of kmod-tpe port from grsecurity
-
- - Brad Spengler - http://grsecurity.net/
-
-Trusted Path Execution is a feature of grsecurity for which code was borrowed from that
-project to make this module.
-
 ## Requirements
 
  - nexcess.repo.elrepo
@@ -31,7 +19,7 @@ project to make this module.
 
 Default role variables can be found in 'defaults/main.yml'; supported variables below:
 
-# kmod_tpe_lock: True|False
+```# kmod_tpe_lock: True|False
 # when enabled, tpe sysctl entries can not be changed without a reboot
 
 # kmod_tpe_log_floodburst: integer, quantative
@@ -100,6 +88,7 @@ Default role variables can be found in 'defaults/main.yml'; supported variables 
 
 # kmod_tpe_extras_restrict_setuid: True|False
 # users not in the trusted_gid are denied calls to setuid
+```
 
 ## Dependencies
 
@@ -117,6 +106,17 @@ Default role variables can be found in 'defaults/main.yml'; supported variables 
 ## License
 
 MIT
+
+## Acknowledgements
+
+ - Corey Henderson - https://github.com/cormander/
+
+Creator and maintainer of kmod-tpe port from grsecurity
+
+ - Brad Spengler - http://grsecurity.net/
+
+Trusted Path Execution is a feature of grsecurity for which code was borrowed from that
+project to make this module.
 
 ## Author Information
 Ryan MacDonald <rmacdonald@nexcess.net> https://github.com/nexcess
