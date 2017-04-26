@@ -19,7 +19,8 @@ kernel modules, kallsyms and calling set(u|g)id.
 
 Default role variables can be found in 'defaults/main.yml'; supported variables below:
 
-```# kmod_tpe_lock: True|False
+```
+# kmod_tpe_lock: True|False
 # when enabled, tpe sysctl entries can not be changed without a reboot
 
 # kmod_tpe_log_floodburst: integer, quantative
