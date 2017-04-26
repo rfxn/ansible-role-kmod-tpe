@@ -19,6 +19,10 @@ kmod_tpe_log_max: 50
 # log denied executions
 kmod_tpe_log: False
 
+# kmod_tpe_log: True|False
+# increase verbosity of logging output
+kmod_tpe_log_verbose: True
+
 # kmod_tpe_kill: True|False
 # kill the offending process and its parent when it gets denied
 kmod_tpe_kill: False
@@ -59,6 +63,11 @@ kmod_tpe_trusted_invert: False
 # kmod_tpe_softmode: True|False
 # do not deny any executions, just log what would have been denied.
 kmod_tpe_softmode: True
+
+# kmod_tpe_xattr_soften: True|False
+# check extended attributes for a soften flag
+# e.g setfattr -n security.tpe -v "soften_exec" /usr/bin/ansible
+kmod_tpe_xattr_soften: True
 
 # kmod_tpe_extras_proc_kallsyms: True|False
 # denies non-root users from viewing /proc/kallsyms

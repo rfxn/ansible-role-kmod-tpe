@@ -21,10 +21,10 @@
                 group=root
                 mode=0644
       notify: reload sysctl
+      tags: tpe-sysctl
   when: kmod_tpe_yum|success
   tags:
     - security
     - system
     - tpe
     - kmod-tpe
-

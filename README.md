@@ -35,6 +35,9 @@ Default role variables can be found in 'defaults/main.yml'; supported variables 
 # kmod_tpe_log: True|False
 # log denied executions
 
+# kmod_tpe_log: True|False
+# increase verbosity of logging output
+
 # kmod_tpe_kill: True|False
 # kill the offending process and its parent when it gets denied
 
@@ -65,6 +68,10 @@ Default role variables can be found in 'defaults/main.yml'; supported variables 
 
 # kmod_tpe_softmode: True|False
 # do not deny any executions, just log what would have been denied.
+
+# kmod_tpe_xattr_soften: True|False
+# check extended attributes for a soften flag
+# e.g setfattr -n security.tpe -v "soften_exec" /usr/bin/ansible
 
 # kmod_tpe_extras_proc_kallsyms: True|False
 # denies non-root users from viewing /proc/kallsyms
@@ -121,4 +128,4 @@ project to make this module.
 
 ## Author Information
 Ryan MacDonald <rmacdonald@nexcess.net> https://github.com/nexcess
-	       <ryan@rfxn.com>          https://github.com/rfxn
+               <ryan@rfxn.com>          https://github.com/rfxn

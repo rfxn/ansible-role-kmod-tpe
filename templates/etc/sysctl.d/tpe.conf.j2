@@ -101,6 +101,15 @@ tpe.log = 0
 {% else %}
 #tpe.log = 1
 {% endif %}
+{% if kmod_tpe_log_verbose is defined %}
+{%   if kmod_tpe_log_verbose %}
+tpe.log_verbose = 1
+{%   else %}
+tpe.log_verbose = 0
+{%   endif %}
+{% else %}
+#tpe.log_verbose = 1
+{% endif %}
 {% if kmod_tpe_kill is defined %}
 {%   if kmod_tpe_kill %}
 tpe.kill = 1
@@ -174,4 +183,13 @@ tpe.softmode = 0
 {%   endif %}
 {% else %}
 tpe.softmode = 0
+{% endif %}
+{% if kmod_tpe_xattr_soften is defined %}
+{%   if kmod_tpe_xattr_soften %}
+tpe.xattr_soften = 1
+{%   else %}
+tpe.xattr_soften = 0
+{%   endif %}
+{% else %}
+#tpe.xattr_soften = 1
 {% endif %}
