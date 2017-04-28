@@ -1,102 +1,33 @@
 ---
-# kmod_tpe_lock: True|False
-# when enabled, tpe sysctl entries can not be changed without a reboot
+# A behavior change to softmode in version 2.x requires
+# that we invert trusts (whitelist to blacklist) so that
+# we can benefit from 'extras' features without having to
+# adhere to TPE in of itself.
+# If for a higher security system, you want to legitmately
+# enforce TPE, set 'kmod_tpe_trusted_invert' False.
+kmod_tpe_trusted_invert: True
+kmod_tpe_softmode: False
+
 kmod_tpe_lock: False
-
-# kmod_tpe_log_floodburst: integer, quantative
-# number of log entries before logging is disabled
 kmod_tpe_log_floodburst: 5
-
-# kmod_tpe_log_floodtime: integer, seconds
-# seconds until re-enabling logging after floodburst
 kmod_tpe_log_floodtime: 5
-
-# kmod_tpe_log_max: integer, quantitative
-# maximun parent processes in a single log entry
 kmod_tpe_log_max: 50
-
-# kmod_tpe_log: True|False
-# log denied executions
 kmod_tpe_log: False
-
-# kmod_tpe_log: True|False
-# increase verbosity of logging output
 kmod_tpe_log_verbose: True
-
-# kmod_tpe_kill: True|False
-# kill the offending process and its parent when it gets denied
 kmod_tpe_kill: False
-
-# kmod_tpe_hardcoded_path: list, full paths
-# a list of directories, colon separated, that TPE will be restricted to; nothing outside
 kmod_tpe_hardcoded_path: []
-
-# kmod_tpe_paranoid: True|False
-# enforce trusted path restrictions on the root
 kmod_tpe_paranoid: False
-
-# kmod_tpe_check_file: True|False
-# check file owner/mode in addition to directory
 kmod_tpe_check_file: False
-
-# kmod_tpe_strict: True|false
-# enforce some TPE features even on trusted users (no world write on exec paths or binaries)
-kmod_tpe_strict: True
-
-# kmod_tpe_dmz_gid: integer, uid value
-# users in this gid can't exec anything at all
+kmod_tpe_strict: False
 kmod_tpe_dmz_gid: '0'
-
-# kmod_tpe_admin_gid: integer, uid value
-# files belonging to this group are treated as if they're owned by root
-kmod_tpe_admin_gid: '10'
-
-# kmod_tpe_trusted_gid: integer, uid value
-# gid of trusted users for which TPE is not enforced
-kmod_tpe_trusted_gid: '10'
-
-# kmod_tpe_trusted_invert: True|False
-# inverts trusted_gid from a whitelist to blacklist; only users in trusted_gid
-# will have TPE restrictions applied
-kmod_tpe_trusted_invert: False
-
-# kmod_tpe_softmode: True|False
-# do not deny any executions, just log what would have been denied.
-kmod_tpe_softmode: True
-
-# kmod_tpe_xattr_soften: True|False
-# check extended attributes for a soften flag
-# e.g setfattr -n security.tpe -v "soften_exec" /usr/bin/ansible
+kmod_tpe_admin_gid: '0'
+kmod_tpe_trusted_gid: '0'
 kmod_tpe_xattr_soften: True
-
-# kmod_tpe_extras_proc_kallsyms: True|False
-# denies non-root users from viewing /proc/kallsyms
 kmod_tpe_extras_proc_kallsyms: True
-
-# kmod_tpe_extras_ps: True|False
-# denies non-root users from viewing processes they don't own
 kmod_tpe_extras_ps: True
-
-# kmod_tpe_extras_ps_gid: integer, uid value
-# gid of users who aren't ps view restricted (wheel gid 10)
 kmod_tpe_extras_ps_gid: '10'
-
-# kmod_tpe_extras_lsmod: True|False
-# denies non-root users from viewing loaded kernel modules
 kmod_tpe_extras_lsmod: True
-
-# kmod_tpe_extras_harden_ptrace: True|False
-# denies non-root users from running ptrace operations
 kmod_tpe_extras_harden_ptrace: True
-
-# kmod_tpe_extras_harden_symlink: True|False
-# denies non-root users from following symlinks to files owned by a different user
 kmod_tpe_extras_harden_symlink: False
-
-# kmod_tpe_extras_harden_hardlinks: True|False
-# denies non-root users from creating hardlinks to files owned by other users and special files (devices etc...)
 kmod_tpe_extras_harden_hardlinks: False
-
-# kmod_tpe_extras_restrict_setuid: True|False
-# users not in the trusted_gid are denied calls to setuid
 kmod_tpe_extras_restrict_setuid: False
