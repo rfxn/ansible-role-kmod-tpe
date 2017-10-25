@@ -121,7 +121,7 @@ MIT
 
 ## Acknowledgements
 
- - Corey Henderson - https://github.com/cormander/
+ - Corey Henderson - https://github.com/cormander/tpe-lkm/
 
 Creator and maintainer of kmod-tpe port from grsecurity
 
