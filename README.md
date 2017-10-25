@@ -73,6 +73,9 @@ Default role variables can be found in 'defaults/main.yml'; supported variables 
 # check extended attributes for a soften flag
 # e.g setfattr -n security.tpe -v "soften_exec" /usr/bin/ansible
 
+# kmod_tpe_extras_ignore_softmode: True|False
+# ignores softmode=true to allow extras_* to operate in TPE softmode
+
 # kmod_tpe_extras_proc_kallsyms: True|False
 # denies non-root users from viewing /proc/kallsyms
 
@@ -107,6 +110,7 @@ Default role variables can be found in 'defaults/main.yml'; supported variables 
     - hosts: servers
       roles:
         - role: nexcess.kmod.tpe
+	  kmod_tpe_extras_ignore_softmode: True
           kmod_tpe_extras_proc_kallsyms: True
           kmod_tpe_extras_ps: True
           kmod_tpe_extras_lsmod: True

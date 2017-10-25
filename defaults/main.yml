@@ -1,12 +1,8 @@
 ---
-# A behavior change to softmode in version 2.x requires
-# that we invert trusts (whitelist to blacklist) so that
-# we can benefit from 'extras' features without having to
-# adhere to TPE in of itself.
-# If for a higher security system, you want to legitmately
-# enforce TPE, set 'kmod_tpe_trusted_invert' False.
-kmod_tpe_trusted_invert: True
-kmod_tpe_softmode: False
+
+kmod_tpe_softmode: True
+kmod_tpe_extras_ignore_softmode: True
+kmod_tpe_extras_log: True
 
 kmod_tpe_lock: False
 kmod_tpe_log_floodburst: 5
@@ -22,6 +18,8 @@ kmod_tpe_strict: False
 kmod_tpe_dmz_gid: '0'
 kmod_tpe_admin_gid: '0'
 kmod_tpe_trusted_gid: '0'
+kmod_tpe_trusted_invert: False
+kmod_tpe_trusted_apps: []
 kmod_tpe_xattr_soften: True
 kmod_tpe_extras_proc_kallsyms: True
 kmod_tpe_extras_ps: True
@@ -31,3 +29,5 @@ kmod_tpe_extras_harden_ptrace: True
 kmod_tpe_extras_harden_symlink: False
 kmod_tpe_extras_harden_hardlinks: False
 kmod_tpe_extras_restrict_setuid: False
+kmod_tpe_kernel_dmesg_restrict: True
+kmod_tpe_kernel_modules_disabled: False

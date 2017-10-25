@@ -1,195 +1,32 @@
 # {{ ansible_managed }}
 
-{% if kmod_tpe_extras_harden_ptrace is defined %}
-{%   if kmod_tpe_extras_harden_ptrace %}
-tpe.extras.harden_ptrace = 1
-{%   else %}
-tpe.extras.harden_ptrace = 0
-{%   endif %}
-{% else %}
-tpe.extras.harden_ptrace = 0
-{% endif %}
-{% if kmod_tpe_extras_proc_kallsyms is defined %}
-{%   if kmod_tpe_extras_proc_kallsyms %}
-tpe.extras.proc_kallsyms = 1
-{%   else %}
-tpe.extras.proc_kallsyms = 0
-{%   endif %}
-{% else %}
-#tpe.extras.proc_kallsyms = 0
-{% endif %}
-{% if kmod_tpe_extras_ps_gid is defined %}
-tpe.extras.ps_gid = {{ kmod_tpe_extras_ps_gid }}
-{% else %}
-#tpe.extras.ps_gid = 0
-{% endif %}
-{% if kmod_tpe_extras_ps is defined %}
-{%   if kmod_tpe_extras_ps %}
-tpe.extras.ps = 1
-{%   else %}
-tpe.extras.ps = 0
-{%   endif %}
-{% else %}
-#tpe.extras.ps = 0
-{% endif %}
-{% if kmod_tpe_extras_lsmod is defined %}
-{%   if kmod_tpe_extras_lsmod %}
-tpe.extras.lsmod = 1
-{%   else %}
-tpe.extras.lsmod = 0
-{%   endif %}
-{% else %}
-#tpe.extras.lsmod = 0
-{% endif %}
-{% if kmod_tpe_extras_harden_symlink is defined %}
-{%   if kmod_tpe_extras_harden_symlink %}
-tpe.extras.harden_symlink = 1
-{%   else %}
-tpe.extras.harden_symlink = 0
-{%   endif %}
-{% else %}
-#tpe.extras.harden_symlink = 0
-{% endif %}
-{% if kmod_tpe_extras_harden_hardlinks is defined %}
-{%   if kmod_tpe_extras_harden_hardlinks %}
-tpe.extras.harden_hardlinks = 1
-{%   else %}
-tpe.extras.harden_hardlinks = 0
-{%   endif %}
-{% else %}
-#tpe.extras.harden_hardlinks = 0
-{% endif %}
-{% if kmod_tpe_extras_restrict_setuid is defined %}
-{%   if kmod_tpe_extras_restrict_setuid %}
-tpe.extras.restrict_setuid = 1
-{%   else %}
-tpe.extras.restrict_setuid = 0
-{%   endif %}
-{% else %}
-#tpe.extras.restrict_setuid = 0
-{% endif %}
-{% if kmod_tpe_lock is defined %}
-{%   if kmod_tpe_lock %}
-tpe.lock = 1
-{%   else %}
-tpe.lock = 0
-{%   endif %}
-{% else %}
-#tpe.lock = 0
-{% endif %}
-{% if kmod_tpe_log_floodburst is defined %}
 tpe.log_floodburst = {{ kmod_tpe_log_floodburst }}
-{% else %}
-#tpe.log_floodburst = 5
-{% endif %}
-{% if kmod_tpe_log_floodtime is defined %}
 tpe.log_floodtime = {{ kmod_tpe_log_floodtime }}
-{% else %}
-#tpe.log_floodtime = 5
-{% endif %}
-{% if kmod_tpe_log_max is defined %}
 tpe.log_max = {{ kmod_tpe_log_max }}
-{% else %}
-#tpe.log_max = 50
-{% endif %}
-{% if kmod_tpe_log is defined %}
-{%   if kmod_tpe_log %}
-tpe.log = 1
-{%   else %}
-tpe.log = 0
-{%   endif %}
-{% else %}
-#tpe.log = 1
-{% endif %}
-{% if kmod_tpe_log_verbose is defined %}
-{%   if kmod_tpe_log_verbose %}
-tpe.log_verbose = 1
-{%   else %}
-tpe.log_verbose = 0
-{%   endif %}
-{% else %}
-#tpe.log_verbose = 1
-{% endif %}
-{% if kmod_tpe_kill is defined %}
-{%   if kmod_tpe_kill %}
-tpe.kill = 1
-{%   else %}
-tpe.kill = 0
-{%   endif %}
-{% else %}
-#tpe.kill = 0
-{% endif %}
-{% if kmod_tpe_hardcoded_path is defined %}
-tpe.hardcoded_path = {{ kmod_tpe_hardcoded_path|join(';') }}
-{% else %}
-#tpe.hardcoded_path =
-{% endif %}
-{% if kmod_tpe_paranoid is defined %}
-{%   if kmod_tpe_paranoid %}
-tpe.paranoid = 1
-{%   else %}
-tpe.paranoid = 0
-{%   endif %}
-{% else %}
-#tpe.paranoid = 0
-{% endif %}
-{% if kmod_tpe_check_file is defined %}
-{%   if kmod_tpe_check_file %}
-tpe.check_file = 1
-{%   else %}
-tpe.check_file = 0
-{%   endif %}
-{% else %}
-#tpe.check_file = 1
-{% endif %}
-{% if kmod_tpe_strict is defined %}
-{%   if kmod_tpe_strict %}
-tpe.strict = 1
-{%   else %}
-tpe.strict = 0
-{%   endif %}
-{% else %}
-#tpe.strict = 1
-{% endif %}
-{% if kmod_tpe_dmz_gid is defined %}
+tpe.log = {{ '0' if kmod_tpe_log is defined and not kmod_tpe_log else '1' }}
+tpe.log_verbose = {{ '0' if kmod_tpe_log_verbose is defined and not kmod_tpe_log_verbose else '1' }}
+tpe.kill = {{ '1' if kmod_tpe_kill is defined and kmod_tpe_kill else '0' }}
+tpe.hardcoded_path = {{ kmod_tpe_hardcoded_path|join(':') }}
+tpe.trusted_apps = {{ kmod_tpe_trusted_apps|join(',') }}
+tpe.paranoid = {{ '1' if kmod_tpe_paranoid is defined and kmod_tpe_paranoid else '0' }}
+tpe.check_file = {{ '0' if kmod_tpe_check_file is defined and not kmod_tpe_check_file else '1' }}
+tpe.strict = {{ '0' if kmod_tpe_strict is defined and not kmod_tpe_strict else '1' }}
 tpe.dmz_gid = {{ kmod_tpe_dmz_gid }}
-{% else %}
-#tpe.dmz_gid = 0
-{% endif %}
-{% if kmod_tpe_admin_gid is defined %}
-tpe.admin_gid = {{ kmod_tpe_admin_gid }}
-{% else %}
-#tpe.admin_gid = 0
-{% endif %}
-{% if kmod_tpe_trusted_gid is defined %}
-tpe.trusted_gid = {{ kmod_tpe_trusted_gid }}
-{% else %}
-#tpe.trusted_gid = 0
-{% endif %}
-{% if kmod_tpe_trusted_invert is defined %}
-{%   if kmod_tpe_trusted_invert %}
-tpe.trusted_invert = 1
-{%   else %}
-tpe.trusted_invert = 0
-{%   endif %}
-{% else %}
-#tpe.trusted_invert = 0
-{% endif %}
-{% if kmod_tpe_softmode is defined %}
-{%   if kmod_tpe_softmode %}
-tpe.softmode = 1
-{%   else %}
-tpe.softmode = 0
-{%   endif %}
-{% else %}
-tpe.softmode = 0
-{% endif %}
-{% if kmod_tpe_xattr_soften is defined %}
-{%   if kmod_tpe_xattr_soften %}
-tpe.xattr_soften = 1
-{%   else %}
-tpe.xattr_soften = 0
-{%   endif %}
-{% else %}
-#tpe.xattr_soften = 1
-{% endif %}
+tpe.admin_gid = {{kmod_tpe_admin_gid }}
+tpe.trusted_gid = {{ kmod_tpe_trusted_gid }} 
+tpe.trusted_invert = {{ '1' if kmod_tpe_trusted_invert is defined and kmod_tpe_trusted_invert else '0' }}
+tpe.xattr_soften = {{ '0' if kmod_tpe_xattr_soften is defined and not kmod_tpe_xattr_soften else '1' }}
+tpe.softmode = {{ '1' if kmod_tpe_softmode is defined and kmod_tpe_softmode else '0' }}
+tpe.lock = {{ '1' if kmod_tpe_lock is defined and kmod_tpe_lock else '0' }}
+tpe.extras.ignore_softmode = {{ '1' if kmod_tpe_extras_ignore_softmode is defined and kmod_tpe_extras_ignore_softmode else '0' }}
+tpe.extras.log = {{ '0' if kmod_tpe_extras_log is defined and not kmod_tpe_extras_log else '1' }}
+tpe.extras.ps = {{ '1' if kmod_tpe_extras_ps is defined and kmod_tpe_extras_ps else '0' }}
+tpe.extras.ps_gid = {{ kmod_tpe_extras_ps_gid }}
+tpe.extras.restrict_setuid = {{ '1' if kmod_tpe_extras_restrict_setuid is defined and kmod_tpe_extras_restrict_setuid else '0' }}
+tpe.extras.lsmod = {{ '0' if kmod_tpe_extras_lsmod is defined and not kmod_tpe_extras_lsmod else '1' }}
+tpe.extras.proc_kallsyms = {{ '0' if kmod_tpe_extras_proc_kallsyms is defined and not kmod_tpe_extras_proc_kallsyms else '1' }}
+tpe.extras.harden_ptrace = {{ '0' if kmod_tpe_extras_harden_ptrace is defined and not kmod_tpe_extras_harden_ptrace else '1' }}
+tpe.extras.hide_uname = {{ '1' if kmod_tpe_extras_hide_uname is defined and kmod_tpe_extras_hide_uname else '0' }}
+
+kernel.modules_disabled = {{ '1' if kmod_tpe_kernel_modules_disabled is defined and kmod_tpe_kernel_modules_disabled else '0' }}
+kernel.dmesg_restrict = {{ '1' if kmod_tpe_kernel_dmesg_restrict is defined and kmod_tpe_kernel_dmesg_restrict else '0' }}
