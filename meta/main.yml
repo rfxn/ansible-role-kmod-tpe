@@ -14,5 +14,5 @@ galaxy_info:
     - system 
     - tpe
 dependencies:
-  - name: "nexcess.repo.elrepo"
+  - name: "nexcess.repo-elrepo"
     src: "git+git@github.com:nexcess/ansible-role-repo-elrepo.git"
